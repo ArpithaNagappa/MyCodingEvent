@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace = "fragments :: head"></head>
+<body class ="container">
+<h1>All Events</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless=" ${events} and ${events.size()}"> No events!</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr class="table-primary">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <!--<th>Delete Event</th>-->
+    </tr>
+    </thead>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.id}"></td>
+        <td th:text="${event.name}"></td>
+        <td th:text="${event.description}"></td>
+
+     <!-- <td>
+            <form th:action="@{/events/delete/{eventName}(eventName=${event})}" th:object="${event}" method="post">
+                <button type="submit" onClick="return confirm('sure?')">Delete</button>
+            </form>
+        </td>-->
+    </tr>
+</table>
+</body>
+</html>

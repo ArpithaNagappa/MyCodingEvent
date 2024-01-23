@@ -12,23 +12,24 @@ import java.util.List;
 @Controller
 @RequestMapping("events")
 public class EventController {
-//public static List<Event> events = new ArrayList<>();
-@GetMapping
-    public String displayAllEvents(Model model){
+    //public static List<Event> events = new ArrayList<>();
+    @GetMapping
+    public String displayAllEvents(Model model) {
 //    List<String> events = new ArrayList<>();
 //    events.add("Code With Pride");
 //    events.add("Strange Loop");
 //    events.add("Apple WWDC");
 //    events.add("SpringOne Platform");
-    model.addAttribute("title", "All Events");
-    model.addAttribute("events", EventData.getAll());
-    return "events/index";
-}
-//response to /events/create
+        model.addAttribute("title", "All Events");
+        model.addAttribute("events", EventData.getAll());
+        return "events/index";
+    }
+
+    //response to /events/create
     @GetMapping("create")
     public String renderCreateEventForm(Model model) {
-        model.addAttribute("title","Create Event");
-    return "events/create";
+        model.addAttribute("title", "Create Event");
+        return "events/create";
     }
 
     @PostMapping("create")
@@ -37,6 +38,7 @@ public class EventController {
         EventData.add(newEvent);
         return "redirect:/events"; //just "redirect:" will work
     }
+
     @GetMapping("delete")
     public String displayDeleteEventForm(Model model) {
         model.addAttribute("title", "Delete Events");
@@ -56,6 +58,24 @@ public class EventController {
         return "redirect:/events";
     }
 
+    @GetMapping("edit/{eventId}")
+    public String displayEditForm(Model model, @PathVariable int eventId) {
+        // controller code will go here
+        Event eventToEdit = EventData.getById(eventId);
+        model.addAttribute("event", eventToEdit);
+        String title = "Edit Event " + eventToEdit.getName() + " (id=" + eventToEdit.getId() + ")";
+        model.addAttribute("title", title);
+        return "events/edit";
+    }
+
+    @PostMapping("edit")
+    public String processEditForm(int eventId, String name, String description) {
+        Event eventToEdit = EventData.getById(eventId);
+        eventToEdit.setName(name);
+        eventToEdit.setDescription(description);
+        return "redirect:/events";
+    }
+}
 //    @PostMapping(value = "/delete/{eventName}")
 //    public String delete(@PathVariable String eventName) {
 //        events.remove(eventName);
@@ -67,4 +87,4 @@ public class EventController {
 //        events.clear();
 //        return "redirect:/events"; //just "redirect:" will work
 //    }
-}
+

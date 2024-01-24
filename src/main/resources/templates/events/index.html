@@ -1,31 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace = "fragments :: head"></head>
+<link th:href="@{styles.css}" rel="stylesheet"/>
 <body class ="container">
+
 <h1>All Events</h1>
+<table>
+    <tr>
+<th>Name</th>
+<th>Description</th>
+<th>Address</th>
+        <th>Picture</th>
 
-<nav th:replace="fragments :: navigation"></nav>
-
-<p th:unless=" ${events} and ${events.size()}"> No events!</p>
-
-<table class="table table-striped">
-    <thead>
-    <tr class="table-primary">
-        <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Edit</th>
-
-        <!--<th>Delete Event</th>-->
     </tr>
-    </thead>
-    <tr th:each="event : ${events}">
-        <td th:text="${event.id}"></td>
-        <td th:text="${event.name}"></td>
-        <td th:text="${event.description}"></td>
-        <td>
-            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
-        </td>
+    <th:block th:each="event:${events}">
+        <tr>
+        <td th:text="${event.key}"></td>
+        <td th:text="${event.value}"></td>
+            <th:block th:if='event.key.equals("address1")'>
+                <th:block th:replace="fragments::address1"></th:block>
+            </th:block>
+            <th:block th:if='event.key.equals("address2")'>
+                <th:block th:replace="fragments::address2"></th:block>
+            </th:block>
+            <th:block th:if='event.key.equals("address3")'>
+                <th:block th:replace="fragments::address3"></th:block>
+            </th:block>
+        </tr>
+    </th:block>
+</table>
+
+
+
+<!--edit-event branch code starts here-->
+<!--<nav th:replace="fragments :: navigation"></nav>-->
+
+<!--<p th:unless=" ${events} and ${events.size()}"> No events!</p>-->
+
+<!--<table class="table table-striped">-->
+<!--    <thead>-->
+<!--    <tr class="table-primary">-->
+<!--        <th>ID</th>-->
+<!--        <th>Name</th>-->
+<!--        <th>Description</th>-->
+<!--        <th>Edit</th>-->
+
+<!--        &lt;!&ndash;<th>Delete Event</th>&ndash;&gt;-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tr th:each="event : ${events}">-->
+<!--        <td th:text="${event.id}"></td>-->
+<!--        <td th:text="${event.name}"></td>-->
+<!--        <td th:text="${event.description}"></td>-->
+<!--        <td>-->
+<!--            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>-->
+<!--        </td>-->
+<!--edit-event branch code stops here-->
 
      <!-- <td>
             <form th:action="@{/events/delete/{eventName}(eventName=${event})}" th:object="${event}" method="post">

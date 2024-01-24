@@ -3,20 +3,36 @@
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <title>Coding Events</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>-->
 </head>
 <body>
-<h1 th:text="${title}">Coding Events</h1>
+<th:block>
+    <td>1234 5th Street</td>
+    <td><img th:src="@{/images/IMG_7028.HEIC}"></td>
+</th:block>
+<th:block>
+<td>1234 6th Street</td>
+    <td><img th:src="@{/images/IMG_8770.HEIC}"></td>
+</th:block>
+<th:block>
+<td >1234 7th Street</td>
+    <td><img th:src="@{/images/IMG_7028.HEIC}"></td>
+</th:block>
 
-<nav th:fragment="navigation">
-<ul class = "nav">
-    <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>
-    <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>
-    <li class="nav-item"><a class="nav-link" href="/events/delete">Delete Event</a></li>
 
-    <!--<li class="nav-item"><a class="nav-link" href="/events/deleteAll">Delete All Events</a></li>-->
-</ul>
-</nav>
+
+<!--edit-event branch code starts here-->
+<!--<h1 th:text="${title}">Coding Events</h1>-->
+
+<!--<nav th:fragment="navigation">-->
+<!--<ul class = "nav">-->
+<!--    <li class="nav-item"><a class="nav-link" href="/events">All Events</a></li>-->
+<!--    <li class="nav-item"><a class="nav-link" href="/events/create">Create Event</a></li>-->
+<!--    <li class="nav-item"><a class="nav-link" href="/events/delete">Delete Event</a></li>-->
+
+<!--    &lt;!&ndash;<li class="nav-item"><a class="nav-link" href="/events/deleteAll">Delete All Events</a></li>&ndash;&gt;-->
+<!--</ul>-->
+<!--</nav>-->
 </body>
 </html>

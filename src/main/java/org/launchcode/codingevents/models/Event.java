@@ -1,8 +1,6 @@
 package org.launchcode.codingevents.models;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.util.Objects;
 
@@ -17,11 +15,26 @@ public class Event {
     @NotBlank
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
+    @NotNull(message="Location cannot be left blank.")
+    @NotBlank(message="Location cannot be left blank.")
+    private String location;
+    @AssertTrue(message="This event must have attendee register.")
+    private boolean shouldRegister = true;
+    @NotNull(message="Number of attendees must be one or more.")
+    @Min(value=1,message="Number of attendees must be one or more.")
+    @Positive(message="Number of attendees must be one or more.")
+    private int numberOfAttendees;
+    @NotNull( message = "Must have number of food courses b/w 1 and 3")
+    @Min(value = 1, message = "Must have number of food courses b/w 1 and 3")
+    @Max(value = 3, message = "Must have number of food courses b/w 1 and 3")
+    private int nmberOfFoodCourses;
 
-    public Event(String name, String description,String contactEmail) {
+    public Event(String name, String description,String contactEmail,String location,int numberOfAttendees) {
         this.name = name;
         this.description = description;
         this.contactEmail= contactEmail;
+        this.location= location;
+        this.numberOfAttendees=numberOfAttendees;
         this.id = nextId;
         nextId++;
     }
@@ -33,8 +46,40 @@ public class Event {
         return contactEmail;
     }
 
+    public int getNmberOfFoodCourses() {
+        return nmberOfFoodCourses;
+    }
+
+    public void setNmberOfFoodCourses(int nmberOfFoodCourses) {
+        this.nmberOfFoodCourses = nmberOfFoodCourses;
+    }
+
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public boolean isShouldRegister() {
+        return shouldRegister;
+    }
+
+    public int getNumberOfAttendees() {
+        return numberOfAttendees;
+    }
+
+    public void setNumberOfAttendees(int numberOfAttendees) {
+        this.numberOfAttendees = numberOfAttendees;
+    }
+
+    public void setShouldRegister(boolean shouldRegister) {
+        this.shouldRegister = shouldRegister;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getName() {

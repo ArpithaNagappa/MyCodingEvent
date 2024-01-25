@@ -14,7 +14,13 @@
         <th>ID</th>
         <th>Name</th>
         <th>Description</th>
-        <th>Edit</th>
+        <th>Contact Email</th>
+        <th>Event Location</th>
+        <th>Attendee shouldRegister</th>
+        <th>Number Of Attendees</th>
+        <th>Number Of FoodCourses</th>
+
+<!--        <th>Edit</th>-->
 
         <!--<th>Delete Event</th>-->
     </tr>
@@ -23,9 +29,15 @@
         <td th:text="${event.id}"></td>
         <td th:text="${event.name}"></td>
         <td th:text="${event.description}"></td>
-        <td>
-            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>
-        </td>
+        <td th:text="${event.contactEmail}"></td>
+        <td th:text="${event.location}"></td>
+        <td th:text="${event.shouldRegister}"></td>
+        <td th:text="${event.numberOfAttendees}"></td>
+        <td th:text="${event.nmberOfFoodCourses}"></td>
+
+<!--        <td>-->
+<!--            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>-->
+<!--        </td>-->
 
      <!-- <td>
             <form th:action="@{/events/delete/{eventName}(eventName=${event})}" th:object="${event}" method="post">

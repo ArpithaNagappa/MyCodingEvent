@@ -1,12 +1,17 @@
 package org.launchcode.codingevents.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 
 import java.util.Objects;
-
+@Entity
 public class Event {
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
+   // private static int nextId = 1;
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
@@ -28,18 +33,21 @@ public class Event {
     @Min(value = 1, message = "Must have number of food courses b/w 1 and 3")
     @Max(value = 3, message = "Must have number of food courses b/w 1 and 3")
     private int nmberOfFoodCourses;
+    private  EventType type;
 
-    public Event(String name, String description,String contactEmail,String location,int numberOfAttendees) {
+    public Event(String name, String description, String contactEmail, String location, int numberOfAttendees, EventType type) {
+        //this();
         this.name = name;
         this.description = description;
         this.contactEmail= contactEmail;
         this.location= location;
         this.numberOfAttendees=numberOfAttendees;
-        this.id = nextId;
-        nextId++;
+        this.type=type;
+
     }
     public Event(){
-
+//        this.id = nextId;
+//        nextId++;
     }
 
     public String getContactEmail() {
@@ -52,6 +60,14 @@ public class Event {
 
     public void setNmberOfFoodCourses(int nmberOfFoodCourses) {
         this.nmberOfFoodCourses = nmberOfFoodCourses;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public void setContactEmail(String contactEmail) {

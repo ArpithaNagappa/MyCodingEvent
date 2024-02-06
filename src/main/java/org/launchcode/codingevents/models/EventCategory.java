@@ -3,6 +3,7 @@ package org.launchcode.codingevents.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
@@ -13,7 +14,7 @@ public class EventCategory {
         @Id
         @GeneratedValue
         private int id;
-
+        @NotBlank
         @Size(min=3, message="Name must be at least 3 characters long")
         private String name;
 

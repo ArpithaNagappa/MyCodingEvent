@@ -19,6 +19,7 @@
         <th>Attendee shouldRegister</th>
         <th>Number Of Attendees</th>
         <th>Number Of FoodCourses</th>
+        <th>Type</th>
 
 <!--        <th>Edit</th>-->
 
@@ -34,6 +35,7 @@
         <td th:text="${event.shouldRegister}"></td>
         <td th:text="${event.numberOfAttendees}"></td>
         <td th:text="${event.nmberOfFoodCourses}"></td>
+        <td th:text="${event.type.displayName}"></td>
 
 <!--        <td>-->
 <!--            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>-->

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("eventcategories")
+@RequestMapping("eventCategories")
 public class EventCategoryController {
     @Autowired
     private EventCategoryRepository eventCategoryRepository;
@@ -29,7 +29,7 @@ public class EventCategoryController {
 
     @GetMapping("create")
     public String renderCreateEventCategoryForm(Model model) {
-        model.addAttribute("title", "Create Category    ");
+        model.addAttribute("title", "Create Category");
         model.addAttribute(new EventCategory());
         return "eventCategories/create";
     }
@@ -40,11 +40,8 @@ public class EventCategoryController {
             model.addAttribute(new EventCategory());
             return "eventCategories/create";
         }
-       // eventCategoryRepository.save(eventCategory);
-       // return "redirect:";
         eventCategoryRepository.save(eventCategory);
-        return "redirect:";
-
+        return "redirect:/eventCategories";
 
     }
 }

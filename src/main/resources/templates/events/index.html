@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace = "fragments :: head"></head>
+<head th:replace = "~{fragments :: head}"></head>
 <body class ="container">
 <h1>All Events</h1>
 
-<nav th:replace="fragments :: navigation"></nav>
+<nav th:replace="~{fragments :: navigation}"></nav>
 
 <p th:unless=" ${events} and ${events.size()}"> No events!</p>
 
@@ -19,10 +19,8 @@
         <th>Attendee shouldRegister</th>
         <th>Number Of Attendees</th>
         <th>Number Of FoodCourses</th>
-        <th>Type</th>
-
-<!--        <th>Edit</th>-->
-
+        <th>Category</th>
+        <!--<th>Edit</th>-->
         <!--<th>Delete Event</th>-->
     </tr>
     </thead>
@@ -35,7 +33,11 @@
         <td th:text="${event.shouldRegister}"></td>
         <td th:text="${event.numberOfAttendees}"></td>
         <td th:text="${event.nmberOfFoodCourses}"></td>
-        <td th:text="${event.type.displayName}"></td>
+        <td th:text="${event.eventCategory.name}"></td>
+    </tr>
+</table>
+</body>
+</html>
 
 <!--        <td>-->
 <!--            <a th:href="@{/events/edit/{id}(id=${event.id})}">Edit</a>-->
@@ -46,7 +48,3 @@
                 <button type="submit" onClick="return confirm('sure?')">Delete</button>
             </form>
         </td>-->
-    </tr>
-</table>
-</body>
-</html>

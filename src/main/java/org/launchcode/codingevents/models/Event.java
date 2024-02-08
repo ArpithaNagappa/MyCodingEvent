@@ -1,7 +1,6 @@
 package org.launchcode.codingevents.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.*;
 
 
@@ -32,19 +31,22 @@ public class Event extends AbstractEntity{
     @Min(value = 1, message = "Must have number of food courses b/w 1 and 3")
     @Max(value = 3, message = "Must have number of food courses b/w 1 and 3")
     private int nmberOfFoodCourses;
-    @ManyToOne
-    @NotNull(message = "Category is require")
-    private EventCategory eventCategory;
+//    @ManyToOne
+//    @NotNull(message = "Category is require")
+//    private EventCategory eventCategory;
+    private EventType type;
 
     public Event(String name, String description,String contactEmail,String location,int numberOfAttendees,
-                 int nmberofFoodCourses, EventCategory eventCategory) {
+                 int nmberofFoodCourses,EventType type) {
+//        EventCategory eventCategory
         this.name = name;
         this.description = description;
         this.contactEmail= contactEmail;
         this.location= location;
         this.numberOfAttendees=numberOfAttendees;
         this.nmberOfFoodCourses= nmberofFoodCourses;
-        this.eventCategory = eventCategory;
+        this.type=type;
+//        this.eventCategory = eventCategory;
 
 //        this.id = nextId;
 //        nextId++;
@@ -114,13 +116,20 @@ public class Event extends AbstractEntity{
         this.description = description;
     }
 
-    public EventCategory getEventCategory() {
-        return eventCategory;
+    public EventType getType() {
+        return type;
     }
 
-    public void setEventCategory(EventCategory eventCategory) {
-        this.eventCategory = eventCategory;
+    public void setType(EventType type) {
+        this.type = type;
     }
+    //    public EventCategory getEventCategory() {
+//        return eventCategory;
+//    }
+//
+//    public void setEventCategory(EventCategory eventCategory) {
+//        this.eventCategory = eventCategory;
+//    }
 
     @Override
     public String toString() {

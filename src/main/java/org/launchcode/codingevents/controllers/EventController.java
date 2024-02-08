@@ -32,7 +32,7 @@ public class EventController {
     public String renderCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
         model.addAttribute(new Event());
-        model.addAttribute("categories", EventType.values());
+        model.addAttribute("types", EventType.values());
 //        model.addAttribute("categories", eventCategoryRepository.findAll());
 
         return "events/create";

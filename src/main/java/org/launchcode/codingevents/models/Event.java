@@ -1,11 +1,13 @@
 package org.launchcode.codingevents.models;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -39,17 +41,15 @@ public class Event extends AbstractEntity{
     @ManyToOne
     @NotNull(message = "Category is require")
     private EventCategory eventCategory;
-    //private EventType type;
 
-    public Event(String name, String description,String contactEmail,String location,int numberOfAttendees,
-                 int nmberofFoodCourses, EventCategory eventCategory) {
+    @ManyToMany
+    private final List<Tag> tags = new ArrayList<>();
+
+
+    public Event(String name, String description,String contactEmail, EventCategory eventCategory) {
 
         this.name = name;
         this.eventCategory = eventCategory;
-//        this.location= location;
-//        this.numberOfAttendees=numberOfAttendees;
-//        this.nmberOfFoodCourses= nmberofFoodCourses;
-
 
     }
     public Event(){
@@ -78,6 +78,14 @@ public class Event extends AbstractEntity{
     public void setEventCategory(EventCategory eventCategory) {
         this.eventCategory = eventCategory;
     }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+    public void addTag(Tag tag) {
+        this.tags.add(tag);
+    }
+
 
     @Override
     public String toString() {

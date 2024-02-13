@@ -41,15 +41,11 @@ public class Event extends AbstractEntity{
     private EventCategory eventCategory;
     //private EventType type;
 
-    public Event(String name, String description,String contactEmail,String location,int numberOfAttendees,
-                 int nmberofFoodCourses, EventCategory eventCategory) {
+    public Event(String name, String description,String contactEmail,
+                 EventCategory eventCategory) {
 
         this.name = name;
         this.eventCategory = eventCategory;
-//        this.location= location;
-//        this.numberOfAttendees=numberOfAttendees;
-//        this.nmberOfFoodCourses= nmberofFoodCourses;
-
 
     }
     public Event(){

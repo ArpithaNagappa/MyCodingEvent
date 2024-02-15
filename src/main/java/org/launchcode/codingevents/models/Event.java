@@ -7,10 +7,6 @@ import jakarta.validation.constraints.*;
 
 @Entity
 public class Event extends AbstractEntity{
-//    @Id
-//    @GeneratedValue
-//    private int id;
-   // private static int nextId = 1;
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
@@ -35,7 +31,6 @@ public class Event extends AbstractEntity{
     @ManyToOne
     @NotNull(message = "Category is require")
     private EventCategory eventCategory;
-    //private EventType type;
 
     public Event(String name, String description,String contactEmail,String location,int numberOfAttendees,
                  int nmberofFoodCourses, EventCategory eventCategory) {
@@ -46,11 +41,7 @@ public class Event extends AbstractEntity{
         this.location= location;
         this.numberOfAttendees=numberOfAttendees;
         this.nmberOfFoodCourses= nmberofFoodCourses;
-//        this.type=type;
         this.eventCategory = eventCategory;
-
-//        this.id = nextId;
-//        nextId++;
     }
     public Event(){
 
@@ -117,13 +108,6 @@ public class Event extends AbstractEntity{
         this.description = description;
     }
 
-//    public EventType getType() {
-//        return type;
-//    }
-//
-//    public void setType(EventType type) {
-//        this.type = type;
-//    }
         public EventCategory getEventCategory() {
         return eventCategory;
     }
@@ -136,19 +120,5 @@ public class Event extends AbstractEntity{
     public String toString() {
         return name;
     }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Event event = (Event) o;
-//        return id == event.id;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
-
 
 }
